@@ -1,17 +1,14 @@
 #version 330 core
 
 layout ( location = 0 ) in vec3 vPosition;
-layout ( location = 1 ) in vec2 texCoord;
+layout ( location = 1 ) in vec3 vColor;
 
-out vec2 TexCoord;
+out vec3 color;
 
-uniform mat4 model;
-uniform mat4 view;
-uniform mat4 projection;
+uniform mat4 translate;
 
 void main()
 {
-	gl_Position = vec4(vPosition, 1.0);
-	
-	TexCoord = vec2( texCoord.x, 1.0 - texCoord.y );
+	color = vColor;
+	gl_Position = translate * vec4(vPosition, 1.0);
 }
